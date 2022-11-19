@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import GamePage from './components/GamePage';
+import HomePage from './components/HomePage';
+import { routes } from './constants/routes';
+import styled from 'styled-components';
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: routes.HOME,
+      element: <HomePage />,
+    },
+    {
+      path: routes.PLAYING,
+      element: <GamePage />,
+    },
+  ]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <RouterProvider router={router} />
+    </Wrapper>
   );
 }
+const Wrapper = styled.div`
+  padding: 20px 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+`;
 
 export default App;
