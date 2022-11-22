@@ -10,10 +10,12 @@ function App() {
     {
       path: routes.HOME,
       element: <HomePage />,
+      errorElement: <div>error</div>,
     },
     {
       path: routes.PLAYING,
       element: <GamePage />,
+      errorElement: <div>error</div>,
     },
   ]);
   return (
